@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cust_mod5_cust_mod5,cust_mod5.cust_mod5,model_cust_mod5_cust_mod5,base.group_user,1,1,1,1
+access_wiz5_wiz5,wiz5.wiz5,model_wiz5_wiz5,base.group_user,1,1,1,1
