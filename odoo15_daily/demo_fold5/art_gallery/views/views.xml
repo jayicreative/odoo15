@@ -1,0 +1,62 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="art_gallery.list">
+      <field name="name">art_gallery list</field>
+      <field name="model">art_gallery.art_gallery</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="art_gallery.action_window">
+      <field name="name">art_gallery window</field>
+      <field name="res_model">art_gallery.art_gallery</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="art_gallery.action_server">
+      <field name="name">art_gallery server</field>
+      <field name="model_id" ref="model_art_gallery_art_gallery"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="art_gallery" id="art_gallery.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="art_gallery.menu_1" parent="art_gallery.menu_root"/>
+    <menuitem name="Menu 2" id="art_gallery.menu_2" parent="art_gallery.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List" id="art_gallery.menu_1_list" parent="art_gallery.menu_1"
+              action="art_gallery.action_window"/>
+    <menuitem name="Server to list" id="art_gal_5" parent="art_gallery.menu_2"
+              action="art_gallery.action_window"/>
+    <menuitem name="view_art" id="view_awesome" parent="art_gallery.menu_root"
+              action="art5_action_window"/>
+
+  </data>
+</odoo>

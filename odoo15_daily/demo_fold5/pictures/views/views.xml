@@ -1,0 +1,78 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="pictures.list">
+      <field name="name">pictures list</field>
+      <field name="model">pictures.pictures</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="description"/>
+          <field name="image1" widget="image"/>
+          <field name="image2" widget="image"/>
+          <field name="image3" widget="image"/>
+          <field name="image4" widget="image"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="pictures.form">
+      <field name="name">pictures list</field>
+      <field name="model">pictures.pictures</field>
+      <field name="arch" type="xml">
+        <form>
+          <field name="description"/>
+          <field name="image1" widget="image"/>
+          <field name="image2" widget="image"/>
+          <field name="image3" widget="image"/>
+          <field name="image4" widget="image"/>
+        </form>
+      </field>
+    </record>
+
+
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="pictures.action_window">
+      <field name="name">pictures window</field>
+      <field name="res_model">pictures.pictures</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="pictures.action_server">
+      <field name="name">pictures server</field>
+      <field name="model_id" ref="model_pictures_pictures"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="pictures" id="pictures.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="pictures.menu_1" parent="pictures.menu_root"/>
+    <menuitem name="Menu 2" id="pictures.menu_2" parent="pictures.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List" id="pictures.menu_1_list" parent="pictures.menu_1"
+              action="pictures.action_window"/>
+    <menuitem name="Server to list" id="pictures" parent="pictures.menu_2"
+              action="pictures.action_server"/>
+
+  </data>
+</odoo>

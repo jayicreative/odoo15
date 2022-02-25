@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <!--  explicit list view definition  -->
+        <record model="ir.ui.view" id="art_id5">
+            <field name="name">wiz list</field>
+            <field name="model">art5.art5</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="age"/>
+                        <field name="gender" widget="radio"/>
+                        <field name="description"/>
+                    </group>
+                    <footer>
+<!--                    <button name="art5" string="view_art" type="object"/>-->
+                        <button name="%(pictures.action_window)d" string="click to view" type="action"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <!--  actions opening views on models  -->
+        <record model="ir.actions.act_window" id="art5_action_window">
+            <field name="name">wiz window</field>
+            <field name="res_model">art5.art5</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
